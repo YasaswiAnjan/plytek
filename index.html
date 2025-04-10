@@ -1,0 +1,1336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlyTek - Revolutionizing The Wood Industry</title>
+    <style>
+        /* Colors */
+        :root {
+            --plytek-primary: #2e5e39;
+            --plytek-secondary: #8c6e41;
+            --plytek-accent: #d9bc8c;
+            --plytek-dark: #333;
+            --plytek-light: #f8f5f0;
+        }
+        
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--plytek-light);
+            color: var(--plytek-dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-fade-in {
+            opacity: 0;
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--plytek-primary);
+            color: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin: 0 15px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--plytek-accent);
+        }
+        
+        .btn {
+            background-color: var(--plytek-accent);
+            color: var(--plytek-dark);
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #c4a772;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+    height: 80vh;
+    background: linear-gradient(rgba(255, 21, 0, 0), rgba(69, 197, 10, 0.246)), url('/images/hero-wood.jpg') center/cover no-repeat;
+    background-color: var(--plytek-primary); /* Added this background color */
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            animation: fadeIn 0.7s ease-out forwards;
+        }
+        
+        .hero .btn {
+            animation: fadeIn 0.9s ease-out forwards;
+        }
+        
+        /* Section Styles */
+        .section {
+            padding: 80px 0;
+        }
+
+        .bg-white {
+            background-color: white;
+        }
+
+        .bg-light {
+            background-color: var(--plytek-light);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--plytek-primary);
+            font-size: 36px;
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 3px;
+            background-color: var(--plytek-secondary);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        /* About Section */
+        .about-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+        
+        .about-image img {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .quote-box {
+            background-color: var(--plytek-light);
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid var(--plytek-primary);
+            margin: 20px 0;
+        }
+
+        .quote-title {
+            color: var(--plytek-secondary);
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+        
+        /* Products Section */
+        .product-cards {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        .product-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            width: 350px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .product-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .product-content {
+            padding: 20px;
+        }
+        
+        .product-content h3 {
+            color: var(--plytek-primary);
+            margin-bottom: 15px;
+        }
+        
+        .product-content ul {
+            list-style-position: inside;
+            margin-bottom: 15px;
+        }
+
+        .product-content li {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: baseline;
+        }
+
+        .product-content li:before {
+            content: "✓";
+            color: var(--plytek-primary);
+            margin-right: 8px;
+        }
+        
+        /* Advantages Section */
+        .advantage-cards {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        .advantage-card {
+            background-color: var(--plytek-light);
+            border-radius: 8px;
+            padding: 30px;
+            width: 350px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .advantage-icon {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: white;
+            border-radius: 50%;
+            color: var(--plytek-primary);
+            font-size: 28px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .advantage-card h3 {
+            color: var(--plytek-secondary);
+            margin-bottom: 15px;
+        }
+        
+        /* Gallery Section */
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            grid-gap: 20px;
+        }
+        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            height: 250px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 15px;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+        
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .modal-content {
+            position: relative;
+            background-color: white;
+            margin: 10% auto;
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 800px;
+            width: 80%;
+        }
+
+        .modal img {
+            width: 100%;
+            height: auto;
+            max-height: 80vh;
+            object-fit: contain;
+        }
+
+        .modal-caption {
+            margin-top: 15px;
+            text-align: center;
+            color: var(--plytek-dark);
+            font-weight: 500;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            color: #aaa;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close-modal:hover {
+            color: black;
+        }
+        
+        /* Projects Section */
+        .project-cards {
+            display: flex;
+            overflow-x: auto;
+            gap: 30px;
+            padding: 20px 0;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+        }
+        
+        .project-cards::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .project-card {
+            flex: 0 0 auto;
+            width: 350px;
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            scroll-snap-align: start;
+        }
+        
+        .project-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .project-content {
+            padding: 20px;
+        }
+        
+        .project-content h3 {
+            color: var(--plytek-primary);
+            margin-bottom: 10px;
+        }
+        
+        .project-content p {
+            margin-bottom: 15px;
+        }
+
+        .scroll-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.8);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+        }
+
+        .scroll-left {
+            left: 10px;
+        }
+
+        .scroll-right {
+            right: 10px;
+        }
+
+        .projects-container {
+            position: relative;
+        }
+        
+        /* Testimonials Section */
+        .testimonial-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background-color: var(--plytek-light);
+            padding: 30px;
+            border-radius: 8px;
+            width: 350px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+        
+        .testimonial-card:before {
+            content: '"';
+            font-size: 100px;
+            color: rgba(0, 0, 0, 0.1);
+            position: absolute;
+            top: -20px;
+            left: 20px;
+        }
+        
+        .testimonial-content {
+            position: relative;
+            z-index: 1;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .testimonial-text {
+            margin-bottom: 20px;
+            font-style: italic;
+            flex-grow: 1;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .testimonial-author img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin-right: 15px;
+            object-fit: cover;
+        }
+        
+        .author-info h4 {
+            color: var(--plytek-primary);
+            margin-bottom: 5px;
+        }
+        
+        .author-info p {
+            color: var(--plytek-secondary);
+            font-size: 14px;
+        }
+        
+        /* Target Market Section */
+        .target-list {
+            list-style: none;
+        }
+
+        .target-list li {
+            display: flex;
+            align-items: flex-start;
+            background-color: var(--plytek-light);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .target-list li i {
+            margin-right: 15px;
+            color: var(--plytek-primary);
+        }
+        
+        /* Contact Section */
+        .contact-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-card-content {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+            padding: 30px;
+        }
+        
+        .contact-info h3 {
+            color: var(--plytek-primary);
+            margin-bottom: 20px;
+        }
+        
+        .contact-info p {
+            margin-bottom: 15px;
+        }
+        
+        .contact-method {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        
+        .contact-icon {
+            background-color: var(--plytek-light);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+        }
+
+        .contact-img {
+            flex: 1;
+            min-height: 300px;
+            background: url('/images/contact-image.jpg') center/cover no-repeat;
+        }
+        
+        /* Map Section */
+        .map-container {
+            margin-top: 30px;
+            border-radius: 8px;
+            overflow: hidden;
+            height: 300px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--plytek-dark);
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .footer-logo {
+            margin-bottom: 20px;
+        }
+        
+        .footer-logo img {
+            height: 80px;
+        }
+        
+        .footer-column h3 {
+            color: var(--plytek-accent);
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column a:hover {
+            color: var(--plytek-accent);
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-icon {
+            color: white;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        
+        .social-icon:hover {
+            background-color: var(--plytek-accent);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #555;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .mobile-menu {
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background-color: var(--plytek-primary);
+                padding: 20px;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+                display: none;
+            }
+
+            .mobile-menu.active {
+                display: block;
+            }
+
+            .mobile-menu ul {
+                list-style: none;
+            }
+
+            .mobile-menu li {
+                margin-bottom: 15px;
+            }
+
+            .mobile-menu a {
+                color: white;
+                text-decoration: none;
+                font-size: 18px;
+                display: block;
+                padding: 5px 0;
+            }
+
+            .mobile-menu .btn {
+                display: block;
+                width: 100%;
+                text-align: center;
+                margin-top: 15px;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .section-title {
+                font-size: 28px;
+            }
+
+            .about-content, .contact-card-content {
+                flex-direction: column;
+            }
+
+            .about-image {
+                order: -1; /* Move image above text on mobile */
+            }
+
+            .contact-img {
+                min-height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <img src="plytek-logo.jpeg" alt="PlyTek Logo">
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#advantages">Why Choose Us</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <button class="btn">Get A Quote</button>
+                <button class="mobile-menu-btn">☰</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Revolutionizing the Wood Industry</h1>
+                <p>High-quality, pest-resistant plywood and timber solutions for construction and furniture manufacturing</p>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section bg-white" id="about">
+        <div class="container">
+            <h2 class="section-title">About PlyTek</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>PlyTek is a cutting-edge company specializing in the production of high-quality, 
+                    pest-resistant plywood and timberwood. With a focus on durability, sustainability, 
+                    and innovation, we aim to transform the wood industry by providing materials that 
+                    offer superior longevity and resistance to environmental threats.</p>
+                    
+                    <div class="quote-box">
+                        <h3 class="quote-title">Our Vision</h3>
+                        <p>To be a leader in the wood industry by offering innovative, sustainable, 
+                        and pest-resistant wood solutions that enhance the quality and durability 
+                        of furniture and construction materials.</p>
+                    </div>
+                    
+                    <div class="quote-box">
+                        <h3 class="quote-title">Our Mission</h3>
+                        <p>To provide top-tier plywood and timberwood that exceed industry standards 
+                        in strength, longevity, and pest resistance, ensuring customer satisfaction 
+                        and long-term value.</p>
+                    </div>
+                </div>
+                
+                <div class="about-image">
+                    <img src="factory.png" alt="PlyTek Manufacturing Facility">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="section bg-light" id="products">
+        <div class="container">
+            <h2 class="section-title">Our Products</h2>
+            <div class="product-cards">
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('plywood.png');"></div>
+                    <div class="product-content">
+                        
+                        <h3>High-Quality Plywood</h3>
+                        <ul>
+                            <li>Manufactured using advanced processing techniques</li>
+                            <li>Designed for structural strength and longevity</li>
+                            <li>Resistant to moisture, pests, and wear</li>
+                            <li>Available in various grades and thicknesses</li>
+                        </ul>
+                        <button class="btn">Learn More</button>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('timber.png');"></div>
+                    <div class="product-content">
+                        <h3>Pest-Resistant Timberwood</h3>
+                        <ul>
+                            <li>Treated to withstand termite and insect damage</li>
+                            <li>Ideal for furniture, flooring, and construction</li>
+                            <li>Eco-friendly alternative to traditional wood</li>
+                            <li>Extended longevity in challenging environments</li>
+                        </ul>
+                        <button class="btn">Learn More</button>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('customwood.png');"></div>
+                    <div class="product-content">
+                        <h3>Custom Wood Solutions</h3>
+                        <ul>
+                            <li>Tailored wood products based on customer needs</li>
+                            <li>Specialized coatings for enhanced protection</li>
+                            <li>Sustainable and environmentally friendly materials</li>
+                            <li>Expert consultation for special projects</li>
+                        </ul>
+                        <button class="btn">Learn More</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Advantages Section -->
+    <section class="section bg-white" id="advantages">
+        <div class="container">
+            <h2 class="section-title">Why Choose PlyTek</h2>
+            <div class="advantage-cards">
+                <div class="advantage-card">
+                    <div class="advantage-icon">🛡️</div>
+                    <h3>Pest Resistance Technology</h3>
+                    <p>We use advanced chemical treatments and natural processes to enhance wood durability against termites and other pests, ensuring the longevity of our products.</p>
+                </div>
+                
+                <div class="advantage-card">
+                    <div class="advantage-icon">🌱</div>
+                    <h3>Sustainability Focus</h3>
+                    <p>Our eco-friendly production techniques reduce waste and source materials responsibly, helping you contribute to environmental conservation.</p>
+                </div>
+                
+                <div class="advantage-card">
+                    <div class="advantage-icon">💡</div>
+                    <h3>Innovation-Driven</h3>
+                    <p>We continuously improve our products through research and development to meet evolving market needs and stay ahead of industry standards.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="section bg-light" id="gallery">
+        <div class="container">
+            <h2 class="section-title">Our Wood Gallery</h2>
+            <div class="gallery-container">
+                <div class="gallery-item" data-img="gallery-1.png" data-caption="Premium Grade Plywood for Interior Finishes">
+                    <img src="gallery-1.png" alt="Premium Plywood">
+                    <div class="gallery-caption">Premium Grade Plywood for Interior Finishes</div>
+                </div>
+                <div class="gallery-item" data-img="gallery-2.png" data-caption="Handpicked Timber Selection Process">
+                    <img src="gallery-2.png" alt="Timber Selection">
+                    <div class="gallery-caption">Handpicked Timber Selection Process</div>
+                </div>
+                <div class="gallery-item" data-img="gallery-3.png" data-caption="Advanced Manufacturing Facility">
+                    <img src="gallery-3.png" alt="Manufacturing Process">
+                    <div class="gallery-caption">Advanced Manufacturing Facility</div>
+                </div>
+                <div class="gallery-item" data-img="gallery-4.png" data-caption="Proprietary Pest-Resistant Treatment">
+                    <img src="gallery-4.png" alt="Pest Treatment">
+                    <div class="gallery-caption">Proprietary Pest-Resistant Treatment</div>
+                </div>
+                <div class="gallery-item" data-img="gallery-5.png" data-caption="Our Sustainable Forestry Practices">
+                    <img src="gallery-5.png" alt="Sustainable Forest">
+                    <div class="gallery-caption">Our Sustainable Forestry Practices</div>
+                </div>
+                <div class="gallery-item" data-img="gallery-6.png" data-caption="Rigorous Quality Testing Procedures">
+                    <img src="gallery-6.png" alt="Quality Testing">
+                    <div class="gallery-caption">Rigorous Quality Testing Procedures</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Modal -->
+    <div class="modal" id="gallery-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <img id="modal-image" src="" alt="Gallery Image">
+            <p id="modal-caption" class="modal-caption"></p>
+        </div>
+    </div>
+
+    <!-- Projects Section -->
+    <section class="section bg-white" id="projects">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-container">
+                <div class="project-cards">
+                    <div class="project-card">
+                        <div class="project-image" style="background-image: url('/images/project-1.jpg');"></div>
+                        <div class="project-content">
+                            <h3>Luxury Residential Complex</h3>
+                            <p>Supplied premium plywood for interior wall panels and custom cabinetry in a 200-unit luxury apartment complex.</p>
+                            <button class="btn">View Project</button>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-image" style="background-image: url('/images/project-2.jpg');"></div>
+                        <div class="project-content">
+                            <h3>Coastal Restaurant Chain</h3>
+                            <p>Provided pest-resistant timber for outdoor decking and furniture at 12 locations in harsh coastal environments.</p>
+                            <button class="btn">View Project</button>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-image" style="background-image: url('/images/project-3.jpg');"></div>
+                        <div class="project-content">
+                            <h3>Eco-Friendly Office Campus</h3>
+                            <p>Developed custom sustainable wood solutions for a LEED-certified corporate headquarters with minimal environmental impact.</p>
+                            <button class="btn">View Project</button>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-image" style="background-image: url('/images/project-4.jpg');"></div>
+                        <div class="project-content">
+                            <h3>Heritage Building Restoration</h3>
+                            <p>Created specially treated timber components matching original specifications for a 100-year-old historical building restoration.</p>
+                            <button class="btn">View Project</button>
+                        </div>
+                    </div>
+                </div>
+                <button class="scroll-btn scroll-left">&lt;</button>
+                <button class="scroll-btn scroll-right">&gt;</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section bg-light" id="testimonials">
+        <div class="container">
+            <h2 class="section-title">What Our Clients Say</h2>
+            <div class="testimonial-container">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p class="testimonial-text">As a software engineer setting up my home office near the coast, I was looking for durable, pest-resistant furniture. After using PlyTek’s timber for over two years, I’ve seen zero signs of termite damage—even in the humid coastal climate.</p>
+                        <div class="testimonial-author">
+                            <img src="---" alt="Sarah Johnson">
+                            <div class="author-info">
+                                <h4>Ashish Raju</h4>
+                                <p>Software Engineer</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p class="testimonial-text">As a furniture manufacturer, quality and consistency are everything. PlyTek delivers premium plywood that exceeds our standards every time, allowing us to create products we're proud to put our name on.</p>
+                        <div class="testimonial-author">
+                            <img src="/images/testimonial-2.jpg" alt="Michael Chen">
+                            <div class="author-info">
+                                <h4>Lokendra Ranawat</h4>
+                                <p>CEO, WoodenStreet</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p class="testimonial-text">We switched to PlyTek for our sustainable building initiative and were impressed not only by the quality of their products but their commitment to environmental responsibility throughout their supply chain.</p>
+                        <div class="testimonial-author">
+                            <img src="/images/testimonial-3.jpg" alt="Emma Rodriguez">
+                            <div class="author-info">
+                                <h4>Emma Rodriguez</h4>
+                                <p>Sustainability Director, GreenBuild Inc.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Target Market Section -->
+    <section class="section bg-white">
+        <div class="container">
+            <h2 class="section-title">Who We Serve</h2>
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="target-market.png" alt="PlyTek Customer Projects">
+                </div>
+                <div class="about-text">
+                    <h3 style="color: var(--plytek-primary); margin-bottom: 20px;">Our Solutions Are Perfect For:</h3>
+                    <ul class="target-list">
+                        <li>
+                            <i>✓</i>
+                            <div>
+                                <strong>Construction Industry:</strong> Builders and developers looking for durable wood materials
+                            </div>
+                        </li>
+                        <li>
+                            <i>✓</i>
+                            <div>
+                                <strong>Furniture Manufacturers:</strong> Companies requiring high-quality plywood and timber
+                            </div>
+                        </li>
+                        <li>
+                            <i>✓</i>
+                            <div>
+                                <strong>Homeowners & Interior Designers:</strong> Individuals seeking long-lasting wood solutions
+                            </div>
+                        </li>
+                        <li>
+                            <i>✓</i>
+                            <div>
+                                <strong>Retail & Wholesale Suppliers:</strong> Businesses supplying wood products to the market
+                            </div>
+                        </li>
+                    </ul>
+                    <p style="margin-top: 20px;">Whatever your wood needs, PlyTek has the expertise and products to help you succeed.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section bg-light" id="contact">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <div class="contact-card">
+                <div class="contact-card-content">
+                    <div class="contact-info">
+                        <h3>Get in Touch</h3>
+                        <p>Have questions about our products or services? Our team is ready to assist you.</p>
+                        
+                        <div class="contact-method">
+                            <div class="contact-icon">📞</div>
+                            <div>
+                                <strong>Phone</strong>
+                                <p>+91 9000989897</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-method">
+                            <div class="contact-icon">✉️</div>
+                            <div>
+                                <strong>Email</strong>
+                                <p>plytek.info@gmail.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-method">
+                            <div class="contact-icon">📍</div>
+                            <div>
+                                <strong>Address</strong>
+                                <p>Door No: 40-1-15/A, MG Road,<br>Near Benz Circle,<br>Andhra Pradesh, India - 520010</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-method">
+                            <div class="contact-icon">🕒</div>
+                            <div>
+                                <strong>Business Hours</strong>
+                                <p>Monday - Friday: 9:00 AM - 6:00 PM<br>
+                                Saturday: 10:00 AM - 2:00 PM<br>
+                                Sunday: Closed</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-img"></div>
+                </div>
+            </div>
+            
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d122409.8805739615!2d80.56922082310211!3d16.509533534411208!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a35eff9482d944b%3A0x939b7e84ab4a0265!2sVijayawada%2C%20Andhra%20Pradesh!5e0!3m2!1sen!2sin!4v1679900200000!5m2!1sen!2sin" 
+loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="PlyTek Location"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <div class="footer-logo">
+                        <img src="plytek-logo.jpeg" alt="PlyTek Logo">
+                    </div>
+                    <p>Revolutionizing the wood industry with high-quality, pest-resistant plywood and timber solutions.</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon" aria-label="Facebook">f</a>
+                        <a href="#" class="social-icon" aria-label="Twitter">t</a>
+                        <a href="#" class="social-icon" aria-label="Instagram">i</a>
+                        <a href="#" class="social-icon" aria-label="LinkedIn">in</a>
+                        <a href="#" class="social-icon" aria-label="YouTube">yt</a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Our Products</h3>
+                    <ul>
+                        <li><a href="#">High-Quality Plywood</a></li>
+                        <li><a href="#">Pest-Resistant Timber</a></li>
+                        <li><a href="#">Custom Wood Solutions</a></li>
+                        <li><a href="#">Sustainable Options</a></li>
+                        <li><a href="#">Treatment Services</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul>
+                        <li>📍 Door No: 40-1-15/A, MG Road , Near Benz Circle, Andhra Pradesh, India - 520010</li>
+                        <li>📞 +91 9000989897</li>
+                        <li>✉️ plytek.info@gmail.com</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; <span id="current-year"></span> PlyTek Woodcraft Innovations. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script -->
+    <script>
+        // Current year for footer copyright
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Mobile menu toggle
+        const menuBtn = document.querySelector('.mobile-menu-btn');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        const mobileLinks = document.querySelectorAll('.mobile-menu a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    // Get header height for offset
+                    const headerHeight = document.querySelector('header').offsetHeight;
+                    
+                    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Gallery modal functionality
+        const modal = document.getElementById('gallery-modal');
+        const modalImg = document.getElementById('modal-image');
+        const modalCaption = document.getElementById('modal-caption');
+        const closeModal = document.querySelector('.close-modal');
+        
+        // Open modal on gallery item click
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        galleryItems.forEach(item => {
+            item.addEventListener('click', () => {
+                modal.style.display = 'block';
+                modalImg.src = item.getAttribute('data-img');
+                modalCaption.textContent = item.getAttribute('data-caption');
+            });
+        });
+        
+        // Close modal on X click
+        closeModal.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+        
+        // Close modal on outside click
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+
+        // Project scroll buttons
+        const scrollContainer = document.querySelector('.project-cards');
+        const scrollLeftBtn = document.querySelector('.scroll-left');
+        const scrollRightBtn = document.querySelector('.scroll-right');
+        
+        scrollLeftBtn.addEventListener('click', () => {
+            scrollContainer.scrollBy({
+                left: -300,
+                behavior: 'smooth'
+            });
+        });
+        
+        scrollRightBtn.addEventListener('click', () => {
+            scrollContainer.scrollBy({
+                left: 300,
+                behavior: 'smooth'
+            });
+        });
+
+        // Check scroll position for buttons visibility
+        function updateScrollButtons() {
+            const isScrollable = scrollContainer.scrollWidth > scrollContainer.clientWidth;
+            const isLeftVisible = scrollContainer.scrollLeft > 0;
+            const isRightVisible = scrollContainer.scrollLeft < (scrollContainer.scrollWidth - scrollContainer.clientWidth - 10);
+            
+            scrollLeftBtn.style.display = isScrollable && isLeftVisible ? 'flex' : 'none';
+            scrollRightBtn.style.display = isScrollable && isRightVisible ? 'flex' : 'none';
+        }
+
+        scrollContainer.addEventListener('scroll', updateScrollButtons);
+        window.addEventListener('resize', updateScrollButtons);
+        
+        // Initial check
+        updateScrollButtons();
+
+        // IMPORTANT: DO NOT REMOVE THIS SCRIPT TAG OR THIS VERY COMMENT!
+        const script = document.createElement('script');
+        script.src = "https://cdn.gpteng.co/gptengineer.js";
+        script.type = "module";
+        document.body.appendChild(script);
+    </script>
+</body>
+</html>
