@@ -3,7 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PlyTek - Revolutionizing The Wood Industry</title>
+    <title>PlyTek - Premium Plywood & Timber | Pest-Resistant Wood Solutions</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="PlyTek offers high-quality, pest-resistant plywood and timber solutions for construction and furniture manufacturing. Sustainable, durable wood products from Andhra Pradesh, India.">
+    <meta name="keywords" content="plywood, timber, wood, pest-resistant, construction materials, furniture wood, sustainable wood, PlyTek, Andhra Pradesh">
+    <meta name="author" content="PlyTek">
+    <meta property="og:title" content="PlyTek - Premium Plywood & Timber Solutions">
+    <meta property="og:description" content="High-quality, pest-resistant plywood and timber for construction and furniture manufacturing">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://plytek.com">
+    <meta property="og:image" content="plytek-logo.jpeg">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="plytek-logo.jpeg">
+    
     <style>
         /* Colors */
         :root {
@@ -33,6 +47,40 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
+        }
+        
+        /* Loading Animation */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--plytek-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease-out;
+        }
+        
+        .loading-overlay.fade-out {
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid var(--plytek-accent);
+            border-top: 5px solid transparent;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
         
         /* Animations */
@@ -67,6 +115,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: relative;
         }
         
         .logo {
@@ -108,6 +157,8 @@
             font-weight: bold;
             cursor: pointer;
             transition: background-color 0.3s;
+            text-decoration: none;
+            display: inline-block;
         }
         
         .btn:hover {
@@ -122,17 +173,57 @@
             font-size: 24px;
             cursor: pointer;
         }
+
+        .mobile-menu {
+            position: absolute;
+            top: 70px;
+            left: 0;
+            right: 0;
+            background-color: var(--plytek-primary);
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            display: none;
+            z-index: 1000;
+        }
+
+        .mobile-menu.active {
+            display: block;
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+        }
+
+        .mobile-menu li {
+            margin-bottom: 15px;
+        }
+
+        .mobile-menu a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            display: block;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .mobile-menu .btn {
+            display: block;
+            width: 100%;
+            text-align: center;
+            margin-top: 15px;
+        }
         
         /* Hero Section */
         .hero {
-    height: 80vh;
-    background: linear-gradient(rgba(255, 21, 0, 0), rgba(69, 197, 10, 0.246)), url('/images/hero-wood.jpg') center/cover no-repeat;
-    background-color: var(--plytek-primary); /* Added this background color */
-    display: flex;
-    align-items: center;
-    text-align: center;
-    color: white;
-}
+            height: 80vh;
+            background: linear-gradient(rgba(46, 94, 57, 0.7), rgba(46, 94, 57, 0.7)), url('factory.png') center/cover no-repeat;
+            background-color: var(--plytek-primary);
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
         
         .hero-content {
             max-width: 800px;
@@ -153,6 +244,7 @@
         
         .hero .btn {
             animation: fadeIn 0.9s ease-out forwards;
+            margin: 0 10px;
         }
         
         /* Section Styles */
@@ -185,6 +277,144 @@
             bottom: -10px;
             left: 50%;
             transform: translateX(-50%);
+        }
+        
+        /* Contact Form Styles */
+        .contact-form {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 20px;
+        }
+
+        .form-row .form-group {
+            flex: 1;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--plytek-primary);
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 4px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--plytek-primary);
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .form-submit {
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: var(--plytek-primary);
+            color: white;
+            padding: 15px 30px;
+            font-size: 16px;
+        }
+
+        .btn-primary:hover {
+            background-color: #1e3e27;
+        }
+
+        /* Quote Modal */
+        .quote-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .quote-modal-content {
+            position: relative;
+            background-color: white;
+            margin: 5% auto;
+            padding: 0;
+            border-radius: 8px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .quote-modal-header {
+            background-color: var(--plytek-primary);
+            color: white;
+            padding: 20px;
+            border-radius: 8px 8px 0 0;
+        }
+
+        .quote-modal-body {
+            padding: 30px;
+        }
+
+        .close-quote-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            color: white;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close-quote-modal:hover {
+            opacity: 0.7;
+        }
+
+        /* Success Message */
+        .success-message {
+            background-color: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            border: 1px solid #c3e6cb;
+            display: none;
+        }
+
+        .error-message {
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            border: 1px solid #f5c6cb;
+            display: none;
         }
         
         /* About Section */
@@ -724,42 +954,9 @@
                 display: block;
             }
 
-            .mobile-menu {
-                position: absolute;
-                top: 70px;
-                left: 0;
-                right: 0;
-                background-color: var(--plytek-primary);
-                padding: 20px;
-                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-                display: none;
-            }
-
-            .mobile-menu.active {
-                display: block;
-            }
-
-            .mobile-menu ul {
-                list-style: none;
-            }
-
-            .mobile-menu li {
-                margin-bottom: 15px;
-            }
-
-            .mobile-menu a {
-                color: white;
-                text-decoration: none;
-                font-size: 18px;
-                display: block;
-                padding: 5px 0;
-            }
-
-            .mobile-menu .btn {
-                display: block;
-                width: 100%;
-                text-align: center;
-                margin-top: 15px;
+            .form-row {
+                flex-direction: column;
+                gap: 0;
             }
             
             .hero h1 {
@@ -789,6 +986,11 @@
     </style>
 </head>
 <body>
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loading-overlay">
+        <div class="loading-spinner"></div>
+    </div>
+
     <!-- Header -->
     <header>
         <div class="container">
@@ -806,8 +1008,23 @@
                     <li><a href="#testimonials">Testimonials</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
-                <button class="btn">Get A Quote</button>
-                <button class="mobile-menu-btn">☰</button>
+                <button class="btn" id="quote-btn">Get A Quote</button>
+                <button class="mobile-menu-btn" id="mobile-menu-btn">☰</button>
+                
+                <!-- Mobile Menu -->
+                <div class="mobile-menu" id="mobile-menu">
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#advantages">Why Choose Us</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><button class="btn" id="mobile-quote-btn">Get A Quote</button></li>
+                    </ul>
+                </div>
             </nav>
         </div>
     </header>
@@ -818,7 +1035,8 @@
             <div class="hero-content">
                 <h1>Revolutionizing the Wood Industry</h1>
                 <p>High-quality, pest-resistant plywood and timber solutions for construction and furniture manufacturing</p>
-                
+                <button class="btn" id="hero-quote-btn">Get A Quote</button>
+                <a href="#about" class="btn" style="background-color: transparent; border: 2px solid var(--plytek-accent); color: var(--plytek-accent);">Learn More</a>
             </div>
         </div>
     </section>
@@ -1111,6 +1329,62 @@
     <section class="section bg-light" id="contact">
         <div class="container">
             <h2 class="section-title">Contact Us</h2>
+            
+            <!-- Contact Form -->
+            <div class="contact-form">
+                <h3 style="color: var(--plytek-primary); margin-bottom: 20px; text-align: center;">Send Us A Message</h3>
+                <div class="success-message" id="contact-success">
+                    Thank you for your message! We'll get back to you within 24 hours.
+                </div>
+                <div class="error-message" id="contact-error">
+                    There was an error sending your message. Please try again or contact us directly.
+                </div>
+                <form id="contact-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name *</label>
+                            <input type="text" id="firstName" name="firstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name *</label>
+                            <input type="text" id="lastName" name="lastName" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="company">Company Name</label>
+                        <input type="text" id="company" name="company">
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject *</label>
+                        <select id="subject" name="subject" required>
+                            <option value="">Select a subject</option>
+                            <option value="general">General Inquiry</option>
+                            <option value="quote">Request Quote</option>
+                            <option value="product">Product Information</option>
+                            <option value="support">Technical Support</option>
+                            <option value="partnership">Business Partnership</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message *</label>
+                        <textarea id="message" name="message" placeholder="Tell us about your project, requirements, or questions..." required></textarea>
+                    </div>
+                    <div class="form-submit">
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </div>
+                </form>
+            </div>
+            
             <div class="contact-card">
                 <div class="contact-card-content">
                     <div class="contact-info">
@@ -1219,14 +1493,103 @@ loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="PlyTek Locatio
         </div>
     </footer>
 
+    <!-- Quote Modal -->
+    <div class="quote-modal" id="quote-modal">
+        <div class="quote-modal-content">
+            <div class="quote-modal-header">
+                <h3>Request A Quote</h3>
+                <span class="close-quote-modal" id="close-quote-modal">&times;</span>
+            </div>
+            <div class="quote-modal-body">
+                <div class="success-message" id="quote-success">
+                    Thank you for your quote request! We'll send you a detailed quote within 24 hours.
+                </div>
+                <div class="error-message" id="quote-error">
+                    There was an error submitting your request. Please try again or contact us directly.
+                </div>
+                <form id="quote-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="quote-firstName">First Name *</label>
+                            <input type="text" id="quote-firstName" name="firstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="quote-lastName">Last Name *</label>
+                            <input type="text" id="quote-lastName" name="lastName" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="quote-email">Email Address *</label>
+                            <input type="email" id="quote-email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="quote-phone">Phone Number *</label>
+                            <input type="tel" id="quote-phone" name="phone" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="quote-company">Company Name</label>
+                        <input type="text" id="quote-company" name="company">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="quote-product">Product Type *</label>
+                            <select id="quote-product" name="productType" required>
+                                <option value="">Select product type</option>
+                                <option value="plywood">High-Quality Plywood</option>
+                                <option value="timber">Pest-Resistant Timber</option>
+                                <option value="custom">Custom Wood Solutions</option>
+                                <option value="mixed">Multiple Products</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="quote-quantity">Estimated Quantity</label>
+                            <input type="text" id="quote-quantity" name="quantity" placeholder="e.g., 100 sheets, 50 cubic feet">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="quote-specifications">Specifications & Requirements *</label>
+                        <textarea id="quote-specifications" name="specifications" placeholder="Please describe your specific requirements, dimensions, grade, finish, delivery timeline, etc." required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="quote-timeline">Project Timeline</label>
+                        <select id="quote-timeline" name="timeline">
+                            <option value="">Select timeline</option>
+                            <option value="urgent">Urgent (within 1 week)</option>
+                            <option value="1-2weeks">1-2 weeks</option>
+                            <option value="3-4weeks">3-4 weeks</option>
+                            <option value="1-2months">1-2 months</option>
+                            <option value="flexible">Flexible</option>
+                        </select>
+                    </div>
+                    <div class="form-submit">
+                        <button type="submit" class="btn btn-primary">Submit Quote Request</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <!-- Script -->
     <script>
+        // Loading animation
+        window.addEventListener('load', () => {
+            const loadingOverlay = document.getElementById('loading-overlay');
+            setTimeout(() => {
+                loadingOverlay.classList.add('fade-out');
+                setTimeout(() => {
+                    loadingOverlay.style.display = 'none';
+                }, 500);
+            }, 1000);
+        });
+
         // Current year for footer copyright
         document.getElementById('current-year').textContent = new Date().getFullYear();
 
         // Mobile menu toggle
-        const menuBtn = document.querySelector('.mobile-menu-btn');
-        const mobileMenu = document.querySelector('.mobile-menu');
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
         
         menuBtn.addEventListener('click', () => {
             mobileMenu.classList.toggle('active');
@@ -1238,6 +1601,112 @@ loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="PlyTek Locatio
             link.addEventListener('click', () => {
                 mobileMenu.classList.remove('active');
             });
+        });
+
+        // Quote Modal Functionality
+        const quoteModal = document.getElementById('quote-modal');
+        const quoteBtns = document.querySelectorAll('#quote-btn, #mobile-quote-btn, #hero-quote-btn');
+        const closeQuoteModal = document.getElementById('close-quote-modal');
+
+        // Open quote modal
+        quoteBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                quoteModal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        // Close quote modal
+        closeQuoteModal.addEventListener('click', () => {
+            quoteModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        });
+
+        // Close modal on outside click
+        window.addEventListener('click', (e) => {
+            if (e.target === quoteModal) {
+                quoteModal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Contact Form Submission
+        const contactForm = document.getElementById('contact-form');
+        const contactSuccess = document.getElementById('contact-success');
+        const contactError = document.getElementById('contact-error');
+
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Hide previous messages
+            contactSuccess.style.display = 'none';
+            contactError.style.display = 'none';
+            
+            // Simulate form submission (in real implementation, you'd send to server)
+            const formData = new FormData(contactForm);
+            const data = Object.fromEntries(formData);
+            
+            // Simulate API call delay
+            setTimeout(() => {
+                // For demo, randomly succeed or fail
+                if (Math.random() > 0.1) { // 90% success rate
+                    contactSuccess.style.display = 'block';
+                    contactForm.reset();
+                    
+                    // Hide success message after 5 seconds
+                    setTimeout(() => {
+                        contactSuccess.style.display = 'none';
+                    }, 5000);
+                } else {
+                    contactError.style.display = 'block';
+                    
+                    // Hide error message after 5 seconds
+                    setTimeout(() => {
+                        contactError.style.display = 'none';
+                    }, 5000);
+                }
+            }, 1000);
+        });
+
+        // Quote Form Submission
+        const quoteForm = document.getElementById('quote-form');
+        const quoteSuccess = document.getElementById('quote-success');
+        const quoteError = document.getElementById('quote-error');
+
+        quoteForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Hide previous messages
+            quoteSuccess.style.display = 'none';
+            quoteError.style.display = 'none';
+            
+            // Simulate form submission
+            const formData = new FormData(quoteForm);
+            const data = Object.fromEntries(formData);
+            
+            // Simulate API call delay
+            setTimeout(() => {
+                // For demo, randomly succeed or fail
+                if (Math.random() > 0.1) { // 90% success rate
+                    quoteSuccess.style.display = 'block';
+                    quoteForm.reset();
+                    
+                    // Hide modal after 3 seconds
+                    setTimeout(() => {
+                        quoteModal.style.display = 'none';
+                        document.body.style.overflow = 'auto';
+                        quoteSuccess.style.display = 'none';
+                    }, 3000);
+                } else {
+                    quoteError.style.display = 'block';
+                    
+                    // Hide error message after 5 seconds
+                    setTimeout(() => {
+                        quoteError.style.display = 'none';
+                    }, 5000);
+                }
+            }, 1000);
         });
 
         // Smooth scrolling for anchor links
@@ -1284,7 +1753,7 @@ loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="PlyTek Locatio
             modal.style.display = 'none';
         });
         
-        // Close modal on outside click
+        // Close gallery modal on outside click
         window.addEventListener('click', (e) => {
             if (e.target === modal) {
                 modal.style.display = 'none';
