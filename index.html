@@ -4,792 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PlyTek - Revolutionizing The Wood Industry</title>
-    <style>
-        /* Colors */
-        :root {
-            --plytek-primary: #2e5e39;
-            --plytek-secondary: #8c6e41;
-            --plytek-accent: #d9bc8c;
-            --plytek-dark: #333;
-            --plytek-light: #f8f5f0;
-        }
-        
-        /* Base Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        body {
-            background-color: var(--plytek-light);
-            color: var(--plytek-dark);
-            line-height: 1.6;
-        }
-        
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        /* Animations */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .animate-fade-in {
-            opacity: 0;
-            animation: fadeIn 0.5s ease-out forwards;
-        }
-
-        /* Header Styles */
-        header {
-            background-color: var(--plytek-primary);
-            color: white;
-            padding: 15px 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-        
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-        }
-        
-        .logo img {
-            height: 50px;
-            margin-right: 10px;
-        }
-        
-        .nav-links {
-            display: flex;
-            list-style: none;
-        }
-        
-        .nav-links li {
-            margin: 0 15px;
-        }
-        
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-        
-        .nav-links a:hover {
-            color: var(--plytek-accent);
-        }
-        
-        .btn {
-            background-color: var(--plytek-accent);
-            color: var(--plytek-dark);
-            padding: 10px 20px;
-            border: none;
-            border-radius: 4px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        
-        .btn:hover {
-            background-color: #c4a772;
-        }
-
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 24px;
-            cursor: pointer;
-        }
-        
-        /* Hero Section */
-        .hero {
-    height: 80vh;
-    background: linear-gradient(rgba(255, 21, 0, 0), rgba(69, 197, 10, 0.246)), url('/images/hero-wood.jpg') center/cover no-repeat;
-    background-color: var(--plytek-primary); /* Added this background color */
-    display: flex;
-    align-items: center;
-    text-align: center;
-    color: white;
-}
-        
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .hero h1 {
-            font-size: 48px;
-            margin-bottom: 20px;
-            animation: fadeIn 0.5s ease-out forwards;
-        }
-        
-        .hero p {
-            font-size: 20px;
-            margin-bottom: 30px;
-            animation: fadeIn 0.7s ease-out forwards;
-        }
-        
-        .hero .btn {
-            animation: fadeIn 0.9s ease-out forwards;
-        }
-        
-        /* Section Styles */
-        .section {
-            padding: 80px 0;
-        }
-
-        .bg-white {
-            background-color: white;
-        }
-
-        .bg-light {
-            background-color: var(--plytek-light);
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 50px;
-            color: var(--plytek-primary);
-            font-size: 36px;
-            position: relative;
-        }
-        
-        .section-title:after {
-            content: '';
-            position: absolute;
-            width: 100px;
-            height: 3px;
-            background-color: var(--plytek-secondary);
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        
-        /* About Section */
-        .about-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 30px;
-        }
-        
-        .about-text {
-            flex: 1;
-            min-width: 300px;
-        }
-        
-        .about-image {
-            flex: 1;
-            min-width: 300px;
-            text-align: center;
-        }
-        
-        .about-image img {
-            max-width: 100%;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .quote-box {
-            background-color: var(--plytek-light);
-            padding: 20px;
-            border-radius: 8px;
-            border-left: 4px solid var(--plytek-primary);
-            margin: 20px 0;
-        }
-
-        .quote-title {
-            color: var(--plytek-secondary);
-            margin-bottom: 10px;
-            font-size: 20px;
-        }
-        
-        /* Products Section */
-        .product-cards {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 30px;
-        }
-        
-        .product-card {
-            background-color: white;
-            border-radius: 8px;
-            overflow: hidden;
-            width: 350px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        
-        .product-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-        }
-        
-        .product-image {
-            height: 200px;
-            background-size: cover;
-            background-position: center;
-        }
-        
-        .product-content {
-            padding: 20px;
-        }
-        
-        .product-content h3 {
-            color: var(--plytek-primary);
-            margin-bottom: 15px;
-        }
-        
-        .product-content ul {
-            list-style-position: inside;
-            margin-bottom: 15px;
-        }
-
-        .product-content li {
-            margin-bottom: 8px;
-            display: flex;
-            align-items: baseline;
-        }
-
-        .product-content li:before {
-            content: "✓";
-            color: var(--plytek-primary);
-            margin-right: 8px;
-        }
-        
-        /* Advantages Section */
-        .advantage-cards {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 30px;
-        }
-        
-        .advantage-card {
-            background-color: var(--plytek-light);
-            border-radius: 8px;
-            padding: 30px;
-            width: 350px;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-        
-        .advantage-icon {
-            width: 64px;
-            height: 64px;
-            margin: 0 auto 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: white;
-            border-radius: 50%;
-            color: var(--plytek-primary);
-            font-size: 28px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-        
-        .advantage-card h3 {
-            color: var(--plytek-secondary);
-            margin-bottom: 15px;
-        }
-        
-        /* Gallery Section */
-        .gallery-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            grid-gap: 20px;
-        }
-        
-        .gallery-item {
-            position: relative;
-            overflow: hidden;
-            border-radius: 8px;
-            height: 250px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            cursor: pointer;
-        }
-        
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s;
-        }
-        
-        .gallery-item:hover img {
-            transform: scale(1.05);
-        }
-        
-        .gallery-caption {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(0, 0, 0, 0.7);
-            color: white;
-            padding: 15px;
-            transform: translateY(100%);
-            transition: transform 0.3s;
-        }
-        
-        .gallery-item:hover .gallery-caption {
-            transform: translateY(0);
-        }
-
-        /* Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0, 0, 0, 0.8);
-        }
-
-        .modal-content {
-            position: relative;
-            background-color: white;
-            margin: 10% auto;
-            padding: 20px;
-            border-radius: 8px;
-            max-width: 800px;
-            width: 80%;
-        }
-
-        .modal img {
-            width: 100%;
-            height: auto;
-            max-height: 80vh;
-            object-fit: contain;
-        }
-
-        .modal-caption {
-            margin-top: 15px;
-            text-align: center;
-            color: var(--plytek-dark);
-            font-weight: 500;
-        }
-
-        .close-modal {
-            position: absolute;
-            top: 10px;
-            right: 20px;
-            color: #aaa;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .close-modal:hover {
-            color: black;
-        }
-        
-        /* Projects Section */
-        .project-cards {
-            display: flex;
-            overflow-x: auto;
-            gap: 30px;
-            padding: 20px 0;
-            scroll-snap-type: x mandatory;
-            scrollbar-width: none;
-        }
-        
-        .project-cards::-webkit-scrollbar {
-            display: none;
-        }
-        
-        .project-card {
-            flex: 0 0 auto;
-            width: 350px;
-            background-color: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            scroll-snap-align: start;
-        }
-        
-        .project-image {
-            height: 200px;
-            background-size: cover;
-            background-position: center;
-        }
-        
-        .project-content {
-            padding: 20px;
-        }
-        
-        .project-content h3 {
-            color: var(--plytek-primary);
-            margin-bottom: 10px;
-        }
-        
-        .project-content p {
-            margin-bottom: 15px;
-        }
-
-        .scroll-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(255, 255, 255, 0.8);
-            border: none;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            cursor: pointer;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            z-index: 10;
-        }
-
-        .scroll-left {
-            left: 10px;
-        }
-
-        .scroll-right {
-            right: 10px;
-        }
-
-        .projects-container {
-            position: relative;
-        }
-        
-        /* Testimonials Section */
-        .testimonial-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 30px;
-        }
-        
-        .testimonial-card {
-            background-color: var(--plytek-light);
-            padding: 30px;
-            border-radius: 8px;
-            width: 350px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            position: relative;
-        }
-        
-        .testimonial-card:before {
-            content: '"';
-            font-size: 100px;
-            color: rgba(0, 0, 0, 0.1);
-            position: absolute;
-            top: -20px;
-            left: 20px;
-        }
-        
-        .testimonial-content {
-            position: relative;
-            z-index: 1;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .testimonial-text {
-            margin-bottom: 20px;
-            font-style: italic;
-            flex-grow: 1;
-        }
-        
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-        }
-        
-        .testimonial-author img {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            margin-right: 15px;
-            object-fit: cover;
-        }
-        
-        .author-info h4 {
-            color: var(--plytek-primary);
-            margin-bottom: 5px;
-        }
-        
-        .author-info p {
-            color: var(--plytek-secondary);
-            font-size: 14px;
-        }
-        
-        /* Target Market Section */
-        .target-list {
-            list-style: none;
-        }
-
-        .target-list li {
-            display: flex;
-            align-items: flex-start;
-            background-color: var(--plytek-light);
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 15px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-        }
-
-        .target-list li i {
-            margin-right: 15px;
-            color: var(--plytek-primary);
-        }
-        
-        /* Contact Section */
-        .contact-card {
-            background-color: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .contact-card-content {
-            display: flex;
-            flex-wrap: wrap;
-        }
-
-        .contact-info {
-            flex: 1;
-            min-width: 300px;
-            padding: 30px;
-        }
-        
-        .contact-info h3 {
-            color: var(--plytek-primary);
-            margin-bottom: 20px;
-        }
-        
-        .contact-info p {
-            margin-bottom: 15px;
-        }
-        
-        .contact-method {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 20px;
-        }
-        
-        .contact-icon {
-            background-color: var(--plytek-light);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 15px;
-        }
-
-        .contact-img {
-            flex: 1;
-            min-height: 300px;
-            background: url('/images/contact-image.jpg') center/cover no-repeat;
-        }
-        
-        /* Map Section */
-        .map-container {
-            margin-top: 30px;
-            border-radius: 8px;
-            overflow: hidden;
-            height: 300px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        .map-container iframe {
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
-        
-        /* Footer */
-        footer {
-            background-color: var(--plytek-dark);
-            color: white;
-            padding: 50px 0 20px;
-        }
-        
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 30px;
-            margin-bottom: 30px;
-        }
-        
-        .footer-column {
-            flex: 1;
-            min-width: 200px;
-        }
-        
-        .footer-logo {
-            margin-bottom: 20px;
-        }
-        
-        .footer-logo img {
-            height: 80px;
-        }
-        
-        .footer-column h3 {
-            color: var(--plytek-accent);
-            margin-bottom: 20px;
-            font-size: 20px;
-        }
-        
-        .footer-column ul {
-            list-style: none;
-        }
-        
-        .footer-column ul li {
-            margin-bottom: 10px;
-        }
-        
-        .footer-column a {
-            color: #ddd;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        
-        .footer-column a:hover {
-            color: var(--plytek-accent);
-        }
-        
-        .social-icons {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
-        
-        .social-icon {
-            color: white;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            transition: background-color 0.3s;
-        }
-        
-        .social-icon:hover {
-            background-color: var(--plytek-accent);
-        }
-        
-        .copyright {
-            text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid #555;
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            
-            .mobile-menu-btn {
-                display: block;
-            }
-
-            .mobile-menu {
-                position: absolute;
-                top: 70px;
-                left: 0;
-                right: 0;
-                background-color: var(--plytek-primary);
-                padding: 20px;
-                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-                display: none;
-            }
-
-            .mobile-menu.active {
-                display: block;
-            }
-
-            .mobile-menu ul {
-                list-style: none;
-            }
-
-            .mobile-menu li {
-                margin-bottom: 15px;
-            }
-
-            .mobile-menu a {
-                color: white;
-                text-decoration: none;
-                font-size: 18px;
-                display: block;
-                padding: 5px 0;
-            }
-
-            .mobile-menu .btn {
-                display: block;
-                width: 100%;
-                text-align: center;
-                margin-top: 15px;
-            }
-            
-            .hero h1 {
-                font-size: 36px;
-            }
-            
-            .hero p {
-                font-size: 18px;
-            }
-            
-            .section-title {
-                font-size: 28px;
-            }
-
-            .about-content, .contact-card-content {
-                flex-direction: column;
-            }
-
-            .about-image {
-                order: -1; /* Move image above text on mobile */
-            }
-
-            .contact-img {
-                min-height: 200px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Header -->
     <header>
         <div class="container">
             <nav>
@@ -812,7 +29,6 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="container">
             <div class="hero-content">
@@ -823,7 +39,6 @@
         </div>
     </section>
 
-    <!-- About Section -->
     <section class="section bg-white" id="about">
         <div class="container">
             <h2 class="section-title">About PlyTek</h2>
@@ -856,7 +71,6 @@
         </div>
     </section>
 
-    <!-- Products Section -->
     <section class="section bg-light" id="products">
         <div class="container">
             <h2 class="section-title">Our Products</h2>
@@ -907,7 +121,6 @@
         </div>
     </section>
 
-    <!-- Advantages Section -->
     <section class="section bg-white" id="advantages">
         <div class="container">
             <h2 class="section-title">Why Choose PlyTek</h2>
@@ -933,7 +146,6 @@
         </div>
     </section>
 
-    <!-- Gallery Section -->
     <section class="section bg-light" id="gallery">
         <div class="container">
             <h2 class="section-title">Our Wood Gallery</h2>
@@ -966,16 +178,14 @@
         </div>
     </section>
 
-    <!-- Gallery Modal -->
     <div class="modal" id="gallery-modal">
         <div class="modal-content">
-            <span class="close-modal">&times;</span>
+            <span class="close-modal">×</span>
             <img id="modal-image" src="" alt="Gallery Image">
             <p id="modal-caption" class="modal-caption"></p>
         </div>
     </div>
 
-    <!-- Projects Section -->
     <section class="section bg-white" id="projects">
         <div class="container">
             <h2 class="section-title">Featured Projects</h2>
@@ -1014,13 +224,12 @@
                         </div>
                     </div>
                 </div>
-                <button class="scroll-btn scroll-left">&lt;</button>
-                <button class="scroll-btn scroll-right">&gt;</button>
+                <button class="scroll-btn scroll-left"><</button>
+                <button class="scroll-btn scroll-right">></button>
             </div>
         </div>
     </section>
 
-    <!-- Testimonials Section -->
     <section class="section bg-light" id="testimonials">
         <div class="container">
             <h2 class="section-title">What Our Clients Say</h2>
@@ -1065,7 +274,6 @@
         </div>
     </section>
 
-    <!-- Target Market Section -->
     <section class="section bg-white">
         <div class="container">
             <h2 class="section-title">Who We Serve</h2>
@@ -1107,7 +315,6 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
     <section class="section bg-light" id="contact">
         <div class="container">
             <h2 class="section-title">Contact Us</h2>
@@ -1162,7 +369,6 @@ loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="PlyTek Locatio
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-content">
@@ -1214,12 +420,11 @@ loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="PlyTek Locatio
             </div>
             
             <div class="copyright">
-                <p>&copy; <span id="current-year"></span> PlyTek Woodcraft Innovations. All rights reserved.</p>
+                <p>© <span id="current-year"></span> PlyTek Woodcraft Innovations. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Script -->
     <script>
         // Current year for footer copyright
         document.getElementById('current-year').textContent = new Date().getFullYear();
