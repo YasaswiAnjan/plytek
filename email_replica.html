@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request for Permission to Leave Campus</title>
+    <style>
+        body {
+            font-family: 'Google Sans', Roboto, Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        
+        .email-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+            overflow: hidden;
+        }
+        
+        .email-header {
+            padding: 20px 24px 16px 24px;
+            border-bottom: 1px solid #e8eaed;
+        }
+        
+        .subject-line {
+            font-size: 22px;
+            font-weight: 400;
+            color: #202124;
+            margin: 0;
+            line-height: 28px;
+        }
+        
+        .star-icon {
+            color: #fbbc04;
+            margin-left: 12px;
+            font-size: 20px;
+        }
+        
+        .email-meta {
+            display: flex;
+            align-items: center;
+            margin-top: 16px;
+            font-size: 14px;
+            color: #5f6368;
+        }
+        
+        .sender-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background-color: #ea4335;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 500;
+            margin-right: 12px;
+        }
+        
+        .sender-info {
+            flex: 1;
+        }
+        
+        .sender-name {
+            font-weight: 500;
+            color: #202124;
+        }
+        
+        .sender-email {
+            color: #5f6368;
+            font-size: 13px;
+        }
+        
+        .email-date {
+            color: #5f6368;
+            font-size: 13px;
+        }
+        
+        .email-body {
+            padding: 24px;
+            line-height: 1.6;
+            color: #202124;
+            font-size: 14px;
+        }
+        
+        .email-body p {
+            margin: 0 0 16px 0;
+        }
+        
+        .highlighted-text {
+            font-weight: 600;
+        }
+        
+        .attachment-section {
+            margin: 24px 0;
+            padding: 16px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            border: 1px solid #e8eaed;
+        }
+        
+        .attachment-header {
+            display: flex;
+            align-items: center;
+            font-size: 13px;
+            color: #5f6368;
+            margin-bottom: 12px;
+        }
+        
+        .attachment-preview {
+            width: 200px;
+            height: 150px;
+            border: 1px solid #dadce0;
+            border-radius: 4px;
+            background: linear-gradient(to bottom, #4285f4 0%, #4285f4 20%, #34a853 20%, #34a853 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .timetable-grid {
+            position: absolute;
+            top: 20%;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                repeating-linear-gradient(0deg, transparent, transparent 14px, rgba(255,255,255,0.2) 14px, rgba(255,255,255,0.2) 15px),
+                repeating-linear-gradient(90deg, transparent, transparent 24px, rgba(255,255,255,0.2) 24px, rgba(255,255,255,0.2) 25px);
+        }
+        
+        .reply-section {
+            border-top: 1px solid #e8eaed;
+            background-color: white;
+        }
+        
+        .reply-header {
+            display: flex;
+            align-items: center;
+            padding: 16px 24px;
+        }
+        
+        .reply-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background-color: #1a73e8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 500;
+            margin-right: 12px;
+        }
+        
+        .reply-info {
+            flex: 1;
+        }
+        
+        .reply-name {
+            font-weight: 500;
+            color: #202124;
+            font-size: 14px;
+        }
+        
+        .reply-email {
+            color: #5f6368;
+            font-size: 12px;
+        }
+        
+        .reply-date {
+            color: #5f6368;
+            font-size: 12px;
+        }
+        
+        .reply-body {
+            padding: 0 24px 16px 68px;
+            font-size: 14px;
+            color: #202124;
+        }
+        
+        .signature {
+            margin-top: 24px;
+            padding-top: 16px;
+            border-top: 1px solid #e8eaed;
+            font-size: 13px;
+            line-height: 1.4;
+        }
+        
+        .signature-name {
+            color: #1a73e8;
+            font-weight: 500;
+        }
+        
+        .signature-title {
+            color: #1a73e8;
+        }
+        
+        .signature-details {
+            color: #5f6368;
+            margin-top: 4px;
+        }
+        
+        .signature-link {
+            color: #1a73e8;
+            text-decoration: none;
+        }
+        
+        .signature-link:hover {
+            text-decoration: underline;
+        }
+        
+        .suggested-replies {
+            padding: 16px 24px;
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        
+        .reply-suggestion {
+            padding: 8px 16px;
+            border: 1px solid #dadce0;
+            border-radius: 20px;
+            background-color: white;
+            color: #1a73e8;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .reply-suggestion:hover {
+            background-color: #f8f9fa;
+            border-color: #1a73e8;
+        }
+        
+        .action-buttons {
+            padding: 16px 24px;
+            display: flex;
+            gap: 12px;
+        }
+        
+        .action-button {
+            padding: 8px 24px;
+            border: 1px solid #dadce0;
+            border-radius: 4px;
+            background-color: white;
+            color: #3c4043;
+            font-size: 14px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .action-button:hover {
+            background-color: #f8f9fa;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+        }
+        
+        .action-button.primary {
+            background-color: #1a73e8;
+            color: white;
+            border-color: #1a73e8;
+        }
+        
+        .action-button.primary:hover {
+            background-color: #1557b0;
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <div class="email-header">
+            <h1 class="subject-line">
+                Request for Permission to Leave Campus on Thursdays and Saturdays
+                <span class="star-icon">★</span>
+            </h1>
+            <div class="email-meta">
+                <div class="sender-avatar">C</div>
+                <div class="sender-info">
+                    <div class="sender-name">CHITTAJALLU SREE YASASWI ANJAN 23BCE9898</div>
+                    <div class="sender-email">&lt;yasaswi.23bce9898@vitapstudent.ac.in&gt;</div>
+                </div>
+                <div class="email-date">Thu, Jul 31, 11:30 AM (1 day ago)</div>
+            </div>
+        </div>
+        
+        <div class="email-body">
+            <p>Dear Sir,</p>
+            
+            <p>I hope you're doing well. I am Chittajallu Sree Yasaswi Anjan, a day scholar, and I'm writing to request your permission to leave the campus this semester on <span class="highlighted-text">Thursdays after 11:00 AM</span> and <span class="highlighted-text">Saturdays after 1:00 PM</span>, as my classes are completed by then on those days.</p>
+            
+            <p>I have attached my class timetable for your reference</p>
+            
+            <p>Thanking you,</p>
+            
+            <p>Chittajallu Sree Yasaswi Anjan</p>
+            
+            <p>23BCE9898</p>
+            
+            <div class="attachment-section">
+                <div class="attachment-header">
+                    <strong>One attachment</strong> • Scanned by Gmail
+                </div>
+                <div class="attachment-preview">
+                    <div class="timetable-grid"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="reply-section">
+            <div class="reply-header">
+                <div class="reply-avatar">M</div>
+                <div class="reply-info">
+                    <div class="reply-name">Manoj Kumar Mishra</div>
+                    <div class="reply-email">to me</div>
+                </div>
+                <div class="reply-date">Thu, Jul 31, 12:44 PM (1 day ago)</div>
+            </div>
+            
+            <div class="reply-body">
+                <p>Request approved for today.</p>
+                
+                <div class="signature">
+                    <div class="signature-name">Dr. Manoj Kumar Mishra</div>
+                    <div class="signature-title">Assistant Professor</div>
+                    <div class="signature-details">
+                        Office: AB-I Raman Hall G-30<br>
+                        Phone: 0-8632370443(O)<br>
+                        Department of Mathematics<br>
+                        VIT-AP University, Near Vijayawada<br>
+                        <a href="https://vitap.ac.in/school-of-advanced-sciences/" class="signature-link">https://vitap.ac.in/school-of-advanced-sciences/</a>
+                    </div>
+                    <div style="margin-top: 8px; color: #5f6368;">...</div>
+                </div>
+            </div>
+            
+            <div class="suggested-replies">
+                <div class="reply-suggestion">Thanks a lot.</div>
+                <div class="reply-suggestion">Thank you for your response.</div>
+                <div class="reply-suggestion">Thank you for the information.</div>
+            </div>
+            
+            <div class="action-buttons">
+                <button class="action-button">
+                    ↶ Reply
+                </button>
+                <button class="action-button">
+                    → Forward
+                </button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
